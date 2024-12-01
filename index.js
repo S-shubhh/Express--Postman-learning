@@ -2,7 +2,6 @@
 // const app = express();
 // const bodyParser = require("body-parser");
 
-const { after, before } = require("node:test");
 
 // app.use(bodyParser.json());
 // app.post('/', function(req,res){
@@ -60,4 +59,25 @@ function counterWork(n){
     }
     }
     
-    counterWork(10);
+    const port = 5555;
+
+    const express = require("express");
+
+    const app = express();
+    app.use(express.json());
+    function calculateSum(n){
+        let ans = 0;
+        for (let index = 0; index <= n; index++) {
+            ans += 0;            
+        }
+        return ans;
+    }
+
+    app.get('/', (req,res)=>{
+        let m = req.query.n;
+        res.send(calculateSum(m));
+    })
+
+    app.listen(port , ()=>{
+        console.log("Server started");
+    })
