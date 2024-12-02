@@ -177,16 +177,16 @@ app.post('/add', (req, res) => {  // For adding kidneys , eithier healthy or unh
 })
 
 
-app.put('/put', (req, res) => {
-    let n = req.query.n;
+// app.put('/put', (req, res) => {
+// //     let n = req.query.n;
 
-    for (let i = 0; i <= users[n].kidneys.length; i++)
-        if (users[n].kidneys[i] === false) {
-            users[n].kidneys[i] = true;
-        }
+// //     for (let i = 0; i <= users[n].kidneys.length; i++)
+// //         if (users[n].kidneys[i] === false) {
+// //             users[n].kidneys[i] = true;
+// //         }
 
-    res.status(200).json({ msg: "kidneys are updated as healthy " });
-})
+// //     res.status(200).json({ msg: "kidneys are updated as healthy " });
+// // })
 
 
 
