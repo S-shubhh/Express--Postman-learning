@@ -125,7 +125,7 @@ app.get('/number', function (req, res) { // for getting total number of kidneys 
             }
         }
 
-        console.log(numberOfHelathyKidneys); // for debugging purpose
+        // console.log(numberOfHelathyKidneys); // for debugging purpose
         let noOfUnhealthyKidneys = noOfKidneys - numberOfHelathyKidneys;
         res.status(200).json({
             message: ` totalKidneys : ${noOfKidneys},  Healthy : ${numberOfHelathyKidneys} , Unhealthy : ${noOfUnhealthyKidneys}`
@@ -188,7 +188,6 @@ app.put('/update', (req, res) => {
             users[n].kidneys[i].healthy = true;
         }
         res.status(200).json("Done");
-
     }
     catch (err) {
         if (err) {
@@ -197,6 +196,30 @@ app.put('/update', (req, res) => {
     }
 
 })
+
+app.delete('/delete', (req, res) => {
+    try {
+        let n = req.query.n;
+        if (!n || !users[n]) {
+            res.status(500).json("User Id is Invalid")
+        }
+
+        let newKidneys = [];
+        for (let index = 0; index < users[n].kidneys.length; index++) {
+                if(users[n].kidneys[index].healthy) {
+                        newKidneys.push({
+                            healthy : "true"
+                        })
+                }                   
+        }
+
+        users[n].kidneys = newKidneys;
+        res.json("msg : Done and dusted .........");
+
+    } catch (error) {
+        console.log(error);
+    }
+    })
 
 const port = 5555;
 app.listen(port, () => {
