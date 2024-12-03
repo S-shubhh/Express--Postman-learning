@@ -2,22 +2,6 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-function calculateSum(n) {
-    let ans = 0;
-    for (let index = 0; index <= n; index++) {
-        ans += index;
-    }
-    return ans;
-
-}
-
-app.get('/sum', (req, res) => {
-    let m = req.query.n;
-    let ans = calculateSum(m);
-    res.status(200).send(ans.toLocaleString());
-})
-
-
 
 let users = [{
     firstName: 'Shubham',

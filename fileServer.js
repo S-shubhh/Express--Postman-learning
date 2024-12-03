@@ -21,23 +21,37 @@
     Testing the server - run `npm run test-fileServer` command in terminal
  */
 
-
-
     const express = require("express");
     const app = express();
     app.use(express.json());
     const fs = require('fs');
+    const path = require('path');
+
+
     app.get('/files', (req,res) => {
-        fs.readdir('files', "utf-8", (err, files) => {
+        fs.readdir('files', "utf-8" , (err, files) => {
             if(err){
-                console.log(err);
+                console.err(err);
             }
             res.send(files);
-            
         })
     })
-    
-    
-    app.listen(5555, function(){
-        console.log("Server Started");
+
+    app.get('/file/:filename', (req,res) => {
+            const { filename} = req.params;
+            const filepath = path.join(__dirname , 'files' , filename);
+            fs.readFile(filepath , 'utf-8', (err,data)=> {
+                if(err){
+                    console.log(err);
+                }
+                res.send(data);
+            })
     })
+
+    app.listen(5555, ()=> {
+        console.log("Server statred at  port : 5555");
+    })
+
+
+   
+
