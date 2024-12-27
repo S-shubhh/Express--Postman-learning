@@ -41,7 +41,7 @@ app.post('/health-checkup', (req, res) => {
     const response = schema.safeParse(kidney);
     if (!response.success) {
         res.status(500).json({
-            msg: "invalid input"
+            msg: "invalid input type"
         })
     }
     else {
