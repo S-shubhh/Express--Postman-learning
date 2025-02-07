@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 
 
-mongoose.connect("mongodb+srv://admin:nMwtTet9HmDQQOFh@cluster0.1dcnaye.mongodb.net/FebruaryTest?retryWrites=true&w=majority");
+mongoose.connect("");
 
 const newUser =  mongoose.model( 'User', {
         name : String,
